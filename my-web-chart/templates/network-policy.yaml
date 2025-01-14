@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allowed-ingress
+spec:
+  podSelector: {}  # Selects all pods in the namespace
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: {{ .Release.Namespace }}  # Ensure the namespace is labeled with
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system  # Ensure the "kube-system" namespace is labeled with `name=kube-system`
+    - namespaceSelector:
+        matchLabels:
+          name: nginx-ingress
