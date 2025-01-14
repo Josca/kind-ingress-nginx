@@ -4,7 +4,17 @@ metadata:
   name: {{ include "my-web-chart.fullname" . }}-content
   labels:
     {{- include "my-web-chart.labels" . | nindent 4 }}
-{{- with .Values.contentData }}
 data:
-  {{- toYaml . | nindent 8 }}
-{{- end }}
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ .Release.Name }}</title>
+    </head>
+    <body>
+        <h1>Welcome to <i>{{ .Release.Name }}</i></h1>
+          <p>This is testing <b>{{ .Release.Name }}</b> web</p>
+    </body>
+    </html>
+# after change run "kubectl rollout restart deployment web -n web"

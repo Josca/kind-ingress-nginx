@@ -12,5 +12,10 @@ helm repo update
 helm install ingress-nginx ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace -f values-ingress-nginx.yaml
 # helm uninstall ingress-nginx -n ingress-nginx
 
-kubectl apply -f manifests
+
+# Update your local /etc/hosts, add lines:
+# 127.0.0.1   web-a.com
+# 127.0.0.1   web-b.com
+helm install web-a ./my-web-chart --namespace web --create-namespace
+helm install web-b ./my-web-chart --namespace web --create-namespace
 ~~~

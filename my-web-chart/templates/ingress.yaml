@@ -24,6 +24,16 @@ spec:
     {{- end }}
   {{- end }}
   rules:
+    - host: {{ .Release.Name }}.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "my-web-chart.fullname" $ }}
+                port:
+                  number: {{ $.Values.service.port }}
     {{- range .Values.ingress.hosts }}
     - host: {{ .host | quote }}
       http:
