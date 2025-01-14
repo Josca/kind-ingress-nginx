@@ -843,7 +843,7 @@ controller:
     port: 10254
     portName: metrics
     # if this port is changed, change healthz-port: in extraArgs: accordingly
-    enabled: false
+    enabled: true
     service:
       # -- Enable the metrics service or not.
       enabled: true
