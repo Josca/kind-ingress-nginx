@@ -1,10 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-nginx-metrics
-  namespace: ingress-nginx
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /metrics
+  name: metrics
+  namespace: nginx-ingress
 spec:
   ingressClassName: nginx
   rules:
@@ -15,6 +13,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: ingress-nginx-controller-metrics
+            name: nginx-ingress-prometheus-service
             port:
-              number: 10254
+              number: 9113

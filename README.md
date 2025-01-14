@@ -11,7 +11,7 @@ helm install nginx-ingress ./nginx-ingress --namespace nginx-ingress --create-na
 # Update your local /etc/hosts, add lines:
 # 127.0.0.1   metrics.ingress-nginx
 kubectl apply -f ingress-metrics.yaml
-# curl http://metrics.ingress-nginx/
+# curl http://metrics.ingress-nginx/metrics
 
 # Update your local /etc/hosts, add lines:
 # 127.0.0.1   web-a.com

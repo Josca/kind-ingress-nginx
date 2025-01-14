@@ -612,7 +612,7 @@ prometheus:
   service:
     ## Creates a ClusterIP Service to expose Prometheus metrics internally
     ## Requires prometheus.create=true
-    create: false
+    create: true
 
     labels:
       service: "nginx-ingress-prometheus-service"
